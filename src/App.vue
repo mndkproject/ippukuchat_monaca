@@ -5,9 +5,9 @@
 </template>
 
 <script>
-  import login from './login';
-  import tabber from './tabber';
-  import content from './content';
+  import login from './Login';
+  import tabber from './Tabber';
+  import content from './Content';
 
   export default {
     data() {

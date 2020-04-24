@@ -6,7 +6,7 @@
 
 <script>
   import customToolbar from './CustomToolbar';
-  import content from './content';
+  import content from './Content';
 
   import settingsPage from 'Settings';
   import memberPage from 'Member';

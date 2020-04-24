@@ -7,7 +7,7 @@
 </template>
 
 <script>
-  import tabber from './tabber';
+  import tabber from './Tabber';
 
   export default {
      methods: {
