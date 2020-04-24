@@ -1,52 +1,19 @@
 <template>
-  <v-ons-page>
-    <v-ons-toolbar>
-      <div class="center">{{ title }}</div>
-    </v-ons-toolbar>
-
-    <v-ons-tabbar swipeable position="auto" :tabs="tabs" :visible="true" :index.sync="activeIndex"></v-ons-tabbar>
-  </v-ons-page>
+  <v-ons-navigator :page-stack="pageStack">
+    <component :is="page" v-for="page in pageStack" :key="page.key" :page-stack="pageStack"></component>
+  </v-ons-navigator>
 </template>
 
 <script>
-  import settingsPage from 'Settings';
-  import homePage from 'Home';
-  import newsPage from 'News';
+  import login from './login';
+  import tabber from './tabber';
+  import content from './content';
 
   export default {
     data() {
       return {
-        activeIndex: 0,
-        tabs: [
-	  {
-	    icon: this.md() ? null : 'ion-home',
-	    label: 'Home',
-	    page: homePage
-	  },
-	  {
-	    icon: this.md() ? null : 'ion-ios-bell',
-	    label: 'News',
-	    page: newsPage,
-	    badge: ''
-	  },
-	  {
-	    icon: this.md() ? null : 'ion-ios-settings',
-	    label: 'Settings',
-	    page: settingsPage
-	  }
-        ]
-      };
-    },
-    methods: {
-      md() {
-        return this.$ons.platform.isAndroid();
+        pageStack: [login]
       }
-    },
-    computed: {
-      title() {
-        return this.tabs[this.activeIndex].label;
-      }
-    },
-    components: { homePage, settingsPage, newsPage }
+    }
   }
 </script>
