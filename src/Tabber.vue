@@ -1,6 +1,6 @@
 <template>
   <v-ons-page>
-    <v-ons-tabbar swipeable position="top" :tabs="tabs" :visible="true" :index.sync="activeIndex" @change-tab="changeTab" @to-content="toContent" @to-logout="toLogout"></v-ons-tabbar>
+    <v-ons-tabbar swipeable position="top" :tabs="tabs" :visible="true" :index.sync="activeIndex" @to-content="toContent" @to-logout="toLogout"></v-ons-tabbar>
   </v-ons-page>
 </template>
 
@@ -8,9 +8,9 @@
   import customToolbar from './CustomToolbar';
   import content from './Content';
 
-  import settingsPage from 'Settings';
-  import memberPage from 'Member';
-  import chatPage from 'Chat';
+  import settingsPage from './tabitem/Settings';
+  import memberPage from './tabitem/Member';
+  import chatPage from './tabitem/Chat';
 
   export default {
     data() {
@@ -45,9 +45,6 @@
       },
       md() {
         return this.$ons.platform.isAndroid();
-      },
-      changeTab(e) {
-        this.activeIndex = e;
       },
       toContent() {
         this.pageStack.push(content);
